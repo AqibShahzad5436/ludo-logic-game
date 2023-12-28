@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    ">
+    <title>Game</title>
+    <style>
+        .cont{
+            height:100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1 class="display-1 text-center">Let Play!</h1>
+    <div class="cont d-flex justify-content-center align-items-center gap-3">
+        <div class="player1 border border-info d-flex flex-column justify-content-center align-items-center p-3">
+            <img src="" alt="" class="pl1">
+            <button class="btn btn-info mt-3">
+                Player1
+            </button>
+        </div>
+        <div class="player2 border border-danger d-flex flex-column justify-content-center align-items-center p-3">
+            <img src="" alt="" class="pl2">
+            <button class="btn btn-danger  mt-3 text-center">
+                Player2
+            </button>
+        </div>
+    </div>
+    <h1 class="winner text-center"></h1>
+    </div>
+
+
+    <script>
+        let player1=document.querySelector('.btn-info')
+        let player2=document.querySelector('.btn-danger')
+        let image1=document.querySelector('.pl1')
+        let image2=document.querySelector('.pl2')
+        let winner=document.querySelector('.winner')
+        let num1;
+        let num2;
+        // console.log(image1,image2)
+        const generaterandom=()=>{
+            let random = Math.floor(Math.random()*6)
+            return random+1;
+            // console.log(random+1);
+        }
+            player1.addEventListener('click',()=>{
+                num1=generaterandom();
+                image1.src=`./faces/${num1}.png`
+        })
+            player2.addEventListener('click',()=>{
+                num2=generaterandom();
+                image2.src=`./faces/${num2}.png`
+                if(num1>num2){
+                    winner.innerHTML = 'Player 1 wins'
+                }else if(num1<num2){
+                    winner.innerHTML = 'Player 2 wins'
+                }else{
+                    winner.innerHTML = 'Match  is draw'
+                }
+
+
+            })
+
+    </script>
+</body>
+</html>
